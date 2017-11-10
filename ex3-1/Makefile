@@ -1,4 +1,4 @@
-CHARM_PATH = ~/charm-proj
+CHARM_PATH ?= ~/charm-proj
 CHARMC = $(CHARM_PATH)/bin/charmc
 
 TARGET = particle
