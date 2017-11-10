@@ -10,9 +10,6 @@ dramatically slows down the execution of the program.
 
 1. Compile and Run
 ------------------
-  Make sure the CHARM_PATH is pointing to the Charm++ version that has been
-built with Projections support (--enable-tracing).
-
   To compile:
     $ make
 
@@ -24,6 +21,8 @@ chare array:
 
 2. Using Projections
 --------------------
+* Docker image users will not be able to perform this step.
+
   A test run will generate files that are used by Projections to display
 various data.
 

@@ -28,6 +28,8 @@ communication to the Makefile (default is 1234).
 
 2. Using liveViz
 --------------------
+* Docker image users will not be able to perform this step.
+
   Run the following command to run liveViz with a 800 x 830 window:
     $ ./liveViz localhost 1234 -w 800 -h 830
 

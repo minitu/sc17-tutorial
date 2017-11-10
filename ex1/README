@@ -6,7 +6,23 @@
 in the Fibonacci Sequence. The parallelism comes from the fact that the chares
 located at the leaves of the recursion tree can be executed concurrently.
 
-1. Compiling a Charm++ Program
+1. Installing Charm++
+---------------------
+* Skip this step if you are using the provided Docker image.
+
+  Download and install Charm++ (Version 6.7.1 for this tutorial):
+    $ wget http://charm.cs.illinois.edu/distrib/charm-6.7.1.tar.gz
+    $ tar zxvf charm-6.7.1
+    $ mv charm-6.7.1 charm
+    $ cd charm
+    $ ./build
+  Follow the instructions, but make sure to build with Projections enabled.
+
+  The included Makefiles of the exercises use CHARM_PATH to look up the
+Charm++ build directory. To set it to your build directory (e.g. ~/charm):
+    $ export CHARM_PATH=~/charm
+
+2. Compiling a Charm++ Program
 ------------------------------
   The Charm Interface file (.ci) first needs to be parsed by charmc to generate
 the C++ code needed for parallel execution. This generates .decl.h and .def.h
@@ -17,7 +33,7 @@ binary. This process is laid out in the Makefile.
   Run the following command to compile the Fibonacci program:
     $ make
 
-2. Running a Charm++ Program
+3. Running a Charm++ Program
 ----------------------------
   The program outputs the calculated Fibonacci number along with the time taken
 for the computation.
