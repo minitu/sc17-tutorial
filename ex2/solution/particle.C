@@ -75,6 +75,8 @@ class Cell: public CBase_Cell {
       received = 0;
     }
 
+    Cell(CkMigrateMessage* m) {}
+
     void pup(PUP::er &p) {
 	    CBase_Cell::pup(p);
 	    p|x_min; p|y_min; p|x_max; p|y_max;
