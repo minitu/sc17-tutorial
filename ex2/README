@@ -1,0 +1,36 @@
+-------------------------------------
+| Exercise 2. Particles: Reductions |
+-------------------------------------
+
+  We use a 2D chare array to simulate particle movements in a 2D grid. Each
+chare corresponds to a cell in the grid, and particles in a cell may move to
+a neighboring cell in each iteration.
+
+1. Performing Reductions
+------------------------
+  Add 2 contribute() calls in Cell::reduce() (line 133 in particle.C),
+one to find out the total number of particles in the grid, and another to get
+the maximum number of particles in a cell. The total number of particles in
+the grid should not change, and the maximum should be roughly consistent due
+to the random perturbation of particle positions.
+
+2. Creating Reduction Target Entry Methods
+------------------------------------------
+  A contribute call requires a target entry method. Add 2 such entry methods
+in Main, one for sum reduction and another for max reduction. Then use
+CkPrintf() in the entry methods to print the corresponding number of particles.
+Do not forget to edit the .ci file as well, using [reductiontarget] as
+attributes for the entry methods.
+
+3. Compile and Run
+------------------
+  To compile:
+    $ make
+
+  To run the program with p cores, n particles per cell using a k x k 2D
+chare array:
+    $ make test P=p N=n K=k
+
+  Default values are P=4, N=10000, K=4.
+
+* The solution code can be found under ex2/solution.

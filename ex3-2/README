@@ -1,0 +1,33 @@
+---------------------------------------------------------
+| Exercise 3-2. Particles: Load Balancing & Projections |
+---------------------------------------------------------
+
+  We use a load balancer in Charm++, RefineLB, to mitigate the load imbalance
+observed in Exercise 3-1. As a result, overall execution time should be faster
+and core usage should become more balanced.
+
+1. Introduce Load Balancing
+---------------------------
+  AtSync() tells the Charm++ runtime that the caller is ready for migration.
+A load balancing step is actually performed when all chares of the collection
+have called AtSync(). Your job is to add AtSync() in Cell::receive(), so that
+it will be invoked at every LB_FREQ iterations.
+
+2. Compile and Run
+------------------
+  To compile:
+    $ make
+
+  To run the program with p cores, n particles per cell using a k x k 2D
+chare array:
+    $ make test P=p N=n K=k
+
+  Default values are P=4, N=10000, K=16.
+
+3. Using Projections
+--------------------
+  Follow the same steps as Exercise 3-1. In the Usage Profile plot, you should
+be able to notice that the usage becomes much more balanced with less idle
+time, and a significant decrease in the execution time.
+
+* The solution code can be found under ex3-2/solution.

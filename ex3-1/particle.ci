@@ -1,0 +1,21 @@
+mainmodule particle {
+
+  include "Particle.h";
+  readonly CProxy_Main mainProxy;
+  readonly CProxy_Cell cellProxy;
+  readonly int particles_per_cell;
+  readonly int cell_dimension;
+
+  mainchare Main {
+    entry Main(CkArgMsg* m);
+    entry [reductiontarget] void printTotal(int result);
+    entry [reductiontarget] void printMax(int result);
+    entry [reductiontarget] void done();
+  };
+
+  array [2D] Cell {
+    entry Cell(void);
+    entry void run();
+    entry void receive(std::vector<Particle> incoming);
+  };
+};

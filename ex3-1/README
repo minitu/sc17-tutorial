@@ -1,0 +1,45 @@
+---------------------------------------------------------
+| Exercise 3-1. Particles: Load Imbalance & Projections |
+---------------------------------------------------------
+
+  The purpose of this exercise is to use Projections, a profiling tool in
+Charm++, to observe an artificially introduced load imbalance. The chares
+originally assigned to the first and last cores start with no particles in
+their respective cells, leading to a load imbalance between the cores that
+dramatically slows down the execution of the program.
+
+1. Compile and Run
+------------------
+  Make sure the CHARM_PATH is pointing to the Charm++ version that has been
+built with Projections support (--enable-tracing).
+
+  To compile:
+    $ make
+
+  To run the program with p cores, n particles per cell using a k x k 2D
+chare array:
+    $ make test P=p N=n K=k
+
+  Default values are P=4, N=10000, K=16.
+
+2. Using Projections
+--------------------
+  A test run will generate files that are used by Projections to display
+various data.
+
+  0. Download projections if necessary:
+    $ git clone http://charm.cs.uiuc.edu/gerrit/projections
+    $ cd projections
+    $ make
+
+  1. Go into the folder where projections is installed and run it:
+    $ cd projections/bin
+    $ ./projections
+
+  2. Go to Open -> File, and choose the generated .sts file.
+
+  3. Once it is loaded, go to Tools -> Usage Profile. You should be able to
+     observe the load imbalance between the cores from the usage percentages.
+
+  4. Timeline is also a useful view, where you can see how chares run on the
+     cores and exchange messages in the execution time frame.

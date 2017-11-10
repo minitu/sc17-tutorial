@@ -1,0 +1,38 @@
+------------------------------------
+| Exercise 3-3. Particles: LiveViz |
+------------------------------------
+
+  In this exercise, we use liveViz, a visualization tool in Charm++, to observe
+how particles move around in the grid. The particles program acts as the server
+whereas liveViz itself becomes the client. Some initialization code is placed
+in the Main constructor, and requestNextFrame() gets invoked whenever liveViz
+requires the next frame for visualization. Chares in the application are
+responsible for implementing this function and should deposit an array of
+unsigned chars that correspond to pixels to be shown in liveViz.
+
+1. Compile and Run
+------------------
+  To compile:
+    $ make
+
+  If compilation fails, you may need to be compile the liveViz library first:
+    $ cd charm/tmp/libs/ck-libs/liveViz
+    $ make
+
+  To run the program with p cores, n particles per cell using a k x k 2D
+chare array:
+    $ make test P=p N=n K=k
+
+    Default values are P=4, N=100, K=16. You can also pass the port for liveViz
+communication to the Makefile (default is 1234).
+
+2. Using liveViz
+--------------------
+  Run the following command to run liveViz with a 800 x 830 window:
+    $ ./liveViz localhost 1234 -w 800 -h 830
+
+  If liveViz is currently not installed:
+    $ git clone http://charm.cs.uiuc.edu/gerrit/ccs_tools
+    $ cd ccs_tools
+    $ ant
+  The liveViz binary will be placed under ccs_tools/bin.
