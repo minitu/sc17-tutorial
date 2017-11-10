@@ -4,7 +4,7 @@ CHARMC = $(CHARM_PATH)/bin/charmc
 TARGET = fib
 
 # P: number of PEs, N: fibonacci number
-P = 4
+P = 2
 N = 20
 
 all: $(TARGET)
@@ -19,9 +19,6 @@ $(TARGET).decl.h: $(TARGET).ci
 
 $(TARGET).o: $(TARGET).C $(TARGET).decl.h
 	$(CHARMC) -c $<
-
-seq: $(TARGET)
-	./charmrun ++local ./$(TARGET) +p1 $(N)
 
 test: $(TARGET)
 	./charmrun ++local ./$(TARGET) +p$(P) $(N)
